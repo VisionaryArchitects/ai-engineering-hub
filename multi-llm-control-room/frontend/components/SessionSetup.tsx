@@ -75,10 +75,17 @@ const SessionSetup: React.FC<SessionSetupProps> = ({ onStart }) => {
               }
               className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-sm"
             >
-              <option value="ollama">Ollama (Local)</option>
-              <option value="lmstudio">LM Studio (Local)</option>
-              <option value="azure_openai">Azure OpenAI</option>
-              <option value="openai_compatible">OpenAI Compatible</option>
+              <optgroup label="Local (Free)">
+                <option value="ollama">Ollama</option>
+                <option value="lmstudio">LM Studio</option>
+                <option value="openai_compatible">OpenAI Compatible</option>
+              </optgroup>
+              <optgroup label="Cloud Providers">
+                <option value="azure_openai">Azure OpenAI</option>
+                <option value="anthropic">Anthropic Claude</option>
+                <option value="nvidia_nim">NVIDIA NIM</option>
+                <option value="huggingface">HuggingFace</option>
+              </optgroup>
             </select>
           </div>
 

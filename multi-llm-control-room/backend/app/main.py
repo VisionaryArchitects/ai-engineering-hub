@@ -27,6 +27,11 @@ app.add_middleware(
 app.include_router(sessions.router)
 app.include_router(websocket.router)
 
+# Phase 2 routers
+from app.routers import frameworks, mcp
+app.include_router(frameworks.router)
+app.include_router(mcp.router)
+
 
 @app.get("/")
 async def root():
@@ -60,15 +65,20 @@ async def get_info():
     """Get system information"""
     return {
         "name": settings.app_name,
-        "version": "0.1.0",
+        "version": "0.2.0",  # Phase 2!
         "supported_providers": AdapterFactory.get_supported_providers(),
         "routing_patterns": ["broadcast", "round_robin", "coordinator", "voting"],
+        "frameworks": ["crewai", "langchain"],
+        "mcp_support": True,
         "features": {
             "multi_model_chat": True,
             "websocket_support": True,
             "cost_tracking": True,
             "export_formats": ["json", "markdown"],
-            "max_models_per_session": 5
+            "max_models_per_session": 5,
+            "framework_orchestration": True,
+            "mcp_tool_integration": True,
+            "database_persistence": True
         }
     }
 

@@ -4,6 +4,9 @@ from .base import ModelAdapter
 from .ollama import OllamaAdapter
 from .openai_compatible import OpenAICompatibleAdapter
 from .azure_openai import AzureOpenAIAdapter
+from .anthropic_claude import AnthropicAdapter
+from .nvidia_nim import NVIDIANIMAdapter
+from .huggingface import HuggingFaceAdapter
 
 
 class AdapterFactory:
@@ -14,6 +17,9 @@ class AdapterFactory:
         "openai_compatible": OpenAICompatibleAdapter,
         "lmstudio": OpenAICompatibleAdapter,  # LM Studio uses OpenAI format
         "azure_openai": AzureOpenAIAdapter,
+        "anthropic": AnthropicAdapter,
+        "nvidia_nim": NVIDIANIMAdapter,
+        "huggingface": HuggingFaceAdapter,
     }
 
     @classmethod
